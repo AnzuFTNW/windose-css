@@ -79,11 +79,12 @@
 
 @font-face {
   font-family: "PixelMplus10";
-  src:  url("https://cdn.leafscape.be/PixelMplus/PixelMplus10-Regular_web.woff2") format("woff2"),
-        url("https://github.com/AnzuFTNW/windose-css/raw/refs/heads/main/assets/fonts/PixelMplus10-Regular.woff") format("woff"),
-        url("https://github.com/AnzuFTNW/windose-css/raw/refs/heads/main/assets/fonts/PixelMplus10-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
+  src: url("https://anzuftnw.github.io/assets/fonts/PixelMplus10-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "zpix";
+  src: url("https://anzuftnw.github.io/assets/fonts/zpix.ttf") format("truetype");
 }
 
 #nav > .wrap::after,
@@ -99,6 +100,16 @@
   line-height: 36px;
   letter-spacing: unset;
   text-align: center;
+}
+
+#nav > .wrap:hover > .links::after {
+  /* this is not really accurate to the original, hard to recreate */
+  font-family: "zpix";
+  font-size: 12px;
+  transform: rotate(-180deg) scale(0.7,1);
+  line-height: 11px;
+  letter-spacing: 3px;
+  writing-mode: vertical-rl;
 }
 
 /* Transitions
@@ -218,12 +229,9 @@ body {
   position: absolute;
   bottom: 2px;
   left: 0px;
-  transform: rotate(-180deg);
-  font-size: 12px;
-  line-height: initial;
-  writing-mode: vertical-rl;
+  margin-bottom: 3px;
   color: var(--color-text-hover);
-  content: "Needy Anilist User";
+  content: "Needy AniList User";
 }
 
 #nav > .wrap > .links > .browse-wrap > .link {
