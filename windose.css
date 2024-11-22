@@ -79,7 +79,11 @@
 
 @font-face {
   font-family: "PixelMplus10";
-  src: url("https://github.com/AnzuFTNW/windose-css/raw/refs/heads/main/assets/fonts/PixelMplus10-Regular.ttf") format('truetype');
+  src:  url("https://cdn.leafscape.be/PixelMplus/PixelMplus10-Regular_web.woff2") format("woff2"),
+        url("https://github.com/AnzuFTNW/windose-css/raw/refs/heads/main/assets/fonts/PixelMplus10-Regular.woff") format("woff"),
+        url("https://github.com/AnzuFTNW/windose-css/raw/refs/heads/main/assets/fonts/PixelMplus10-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
 }
 
 #nav > .wrap::after,
