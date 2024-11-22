@@ -1,0 +1,464 @@
+/* ==========================================================================
+   Needy AniList User's Windose - V0.1.3 - by @anzuftnw
+   - a WIN95-esque NGO/NSO inspired custom CSS-theme for AniList.co
+   ========================================================================== */
+
+/*
+ * TODO:
+ * - Finish Windose Menu
+ *   - Sidebar Text
+ *   - "More" Menu Tab and sub tabs
+ * - Theme Switcher (Daytime Display)
+ *   - Ame to KAngel transformation display on theme switch??
+ * - Loading Screen (Booting Up Windose)
+ * - Notifications Icon similar to WIN11
+ * - Searchbar similar to WIN11
+ * - Create Streaming Window to display Ame/KAngel animations (make them with photoshop ig, gifs)
+ *   - Randomize Which one to display?
+ * - Cakes helps me achieve this
+ *   - Display on profile maybe if not using css
+ * - Fix up code
+ *   - Order all attributes
+ *   - Use Variables for reoccuring things and for dynamic changing
+ *   - Use multiple selectors for reoccuring things
+ */
+
+/* ==========================================================================
+   Global Declerations
+   ========================================================================== */
+
+:root {
+  --color-background-primary: #fae3ff;
+  --color-background-secondary: #4d23cf;
+  --color-border-upper: white;
+  --color-border-lower: #815cda;
+  --color-border-lower-button: #160a3c;
+  --color-text-primary: black;
+  --color-text-secondary: var(--color-background-secondary);
+  --color-text-hover: white;
+}
+
+/* Buttons
+   ========================================================================== */
+
+#nav > .wrap,
+#nav > .wrap > .links > .link,
+#nav > .wrap > .links > .browse-wrap {
+  width: calc(196px + 2 * 2px);
+  height: calc(36px + 2 * 2px);
+  border-width: 2px;
+  border-color: var(--color-border-upper) var(--color-border-lower) var(--color-border-lower) var(--color-border-upper);
+  border-style: solid;
+  background-color: var(--color-background);
+}
+  
+#nav > .wrap:hover {
+  border-color: var(--color-border-lower) var(--color-border-upper) var(--color-border-upper) var(--color-border-lower);
+}
+
+#nav > .wrap > .links > .link:hover,
+#nav > .wrap > .links > .browse-wrap:hover {
+  border-color: var(--color-border-upper) var(--color-border-lower-button) var(--color-border-lower-button) var(--color-border-upper);
+  background-color: var(--color-background-secondary);
+  color: var(--color-text-hover);
+}
+
+/* Fonts
+   ========================================================================== */
+
+@font-face {
+  font-family: "PixelMplus10";
+  src: url("https://static.wikitide.net/boyhoodsendwiki/9/9a/PixelMplus10-Regular.woff")
+       format("woff");
+}
+
+#nav > .wrap::after,
+#nav > .wrap > .links {
+  font-family: "PixelMplus10";
+  font-size: 20px;
+  font-weight: unset;
+  line-height: 36px;
+  letter-spacing: unset;
+  text-align: center;
+}
+
+/* Transitions
+   ========================================================================== */
+
+#nav > .wrap > .links > .link,
+#nav > .wrap > .links > .browse-wrap,
+#nav > .wrap > .links > .browse-wrap > .link {
+  transition: unset;
+}
+
+/* ==========================================================================
+   Desktop
+   ========================================================================== */
+
+body {
+  display: flex;
+  justify-content: center;
+  background-attachment: fixed;
+  background-color: #222;
+  background-image: url("https://safe.haiiro.moe/OlvNoBbUjyWx.jpg");
+  background-position: center 0;
+  background-repeat: no-repeat;
+}
+
+#app {
+  width: 1440px;
+}
+
+/* ==========================================================================
+   Taskbar
+   ========================================================================== */
+
+#nav {
+  top: unset !important; /* "!important" to remove flicker from JS (.hide) */
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  /* display: flex; */
+  justify-content: flex-start;
+  width: 1440px;
+  height: calc(45px + 2px);
+  border-top-width: 2px;
+  border-top-color: var(--color-border-upper);
+  border-top-style: solid;
+  background-color: var(--color-background-primary);
+}
+
+/* Start Button
+   ========================================================================== */
+
+#nav > .wrap,
+#nav > .wrap::before {
+  width: calc(134px + 2 * 2px);
+  height: calc(28px + 2 * 2px);
+}
+
+#nav > .wrap {
+  display: flex;
+  margin: 7px 0 0 8px;
+}
+
+#nav > .wrap::before {
+  position: absolute;
+  bottom: 6px;
+  left: 8px;
+  content: "";
+}
+
+#nav > .wrap:hover::before {
+  /* (start button) + start button top margin + task bar top border width + start menu bottom margin */
+  height: calc((28px + 2 * 2px) + 7px + 2px + 1px);
+}
+
+#nav > .wrap::after {
+  margin-left: 27px;
+  color: var(--color-text-primary);
+  content: "START";
+}
+
+#nav > .wrap > .logo {
+  width: 32px;
+  height: 24px;
+  margin-left: 3px;
+  background-image: url("https://safe.haiiro.moe/nlDMWbOyKlyp.png");
+}
+
+#nav > .wrap > .logo > img {
+  display: none;
+}
+
+/* ==========================================================================
+   Start Menu
+   ========================================================================== */
+
+#nav > .wrap > .links {
+  position: absolute;
+  left: 0px;
+  /*
+   * (taskbar height + top border width) + (taskbar height + top border width + bottom margin) -
+   * ((start menu item height + 2 * start menu item border width) * number of start menu items) 
+   */
+  bottom: calc((45px + 2px) - (45px + 2px + 1px) - ((36px + 2 * 2px) * 6));
+  /* bottom: 47px; */
+  flex-direction: column;
+  align-items: flex-end;
+  width: calc(12px + (196px + 2* 2px));
+  margin-bottom: 1px;
+  background-image: url("https://safe.haiiro.moe/26VEfw7mnlRY.jpg");
+  color: var(--color-text-secondary);
+}
+
+#nav > .wrap:hover > .links {
+  bottom: calc(45px + 2px);
+}
+
+#nav > .wrap > .links > .link,
+#nav > .wrap > .links > .browse-wrap,
+#nav > .wrap > .links > .browse-wrap > .link {
+  padding: unset;
+}
+
+/* Start Menu Dropdowns
+   ========================================================================== */
+
+#nav > .wrap > .links > .browse-wrap:hover::after {
+  display: none;
+}
+
+#nav > .wrap > .links > .browse-wrap > .dropdown {
+  top: calc(-2px - 80px);
+  left: calc(-2px + 200px);
+  pointer-events: auto;
+  background-color: unset;
+  border-radius: unset;
+  box-shadow: unset;
+  transition: unset;
+  animation: unset;
+  font-family: "PixelMplus10";
+  width: unset;
+}
+
+#nav > .wrap > .links > .browse-wrap > .dropdown::before {
+  display: none;
+}
+
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links {
+  padding: 0;
+}
+
+#nav
+  > .wrap
+  > .links
+  > .browse-wrap
+  > .dropdown
+  > .primary-links
+  > .primary-link {
+  color: #4d23cf;
+  font-size: 20px;
+  font-weight: unset;
+  display: flex;
+  transition: unset;
+  margin-bottom: unset;
+}
+
+#nav
+  > .wrap
+  > .links
+  > .browse-wrap
+  > .dropdown
+  > .primary-links
+  > .primary-link
+  > a {
+  display: none;
+}
+
+#nav
+  > .wrap
+  > .links
+  > .browse-wrap
+  > .dropdown
+  > .primary-links
+  > .primary-link
+  > section {
+  width: 200px;
+  height: 40px;
+  background-color: #fae3ff;
+  border-width: 2px;
+  border-color: white #815cda #815cda white;
+  border-style: solid;
+}
+
+#nav
+  > .wrap
+  > .links
+  > .browse-wrap
+  > .dropdown
+  > .primary-links
+  > .primary-link
+  > section:hover {
+  border-color: white #160a3c #160a3c white;
+  background-color: #4d23cf;
+  color: white;
+}
+
+#nav
+  > .wrap
+  > .links
+  > .browse-wrap
+  > .dropdown
+  > .primary-links
+  > .primary-link
+  > section:hover
+  > .secondary-links {
+  display: flex;
+}
+
+#nav
+  > .wrap
+  > .links
+  > .browse-wrap
+  > .dropdown
+  > .primary-links
+  > .primary-link
+  > section
+  > .primary-link-text {
+  transition: unset;
+}
+
+#nav
+  > .wrap
+  > .links
+  > .browse-wrap
+  > .dropdown
+  > .primary-links
+  > .primary-link
+  > section
+  > .primary-link-text:hover {
+  color: inherit;
+}
+
+#nav
+  > .wrap
+  > .links
+  > .browse-wrap
+  > .dropdown
+  > .primary-links
+  > .primary-link
+  > section
+  > .secondary-links {
+  margin-top: unset;
+  position: absolute;
+  left: calc(200px);
+  top: 0px;
+  /* display: flex; */
+  flex-direction: column;
+  font-size: unset;
+  font-weight: unset;
+  transition: unset;
+  display: none;
+}
+
+#nav
+  > .wrap
+  > .links
+  > .browse-wrap
+  > .dropdown
+  > .primary-links
+  > .primary-link:last-child
+  > section
+  > .secondary-links {
+  top: 40px;
+}
+
+#nav
+  > .wrap
+  > .links
+  > .browse-wrap
+  > .dropdown
+  > .primary-links
+  > .primary-link
+  > section
+  > .secondary-links
+  > a {
+  width: 200px;
+  height: 40px;
+  background-color: #fae3ff;
+  border-width: 2px;
+  border-color: white #815cda #815cda white;
+  border-style: solid;
+  font-size: 20px;
+  font-weight: unset;
+  margin: 0;
+  transition: unset;
+  color: #4d23cf;
+}
+
+#nav
+  > .wrap
+  > .links
+  > .browse-wrap
+  > .dropdown
+  > .primary-links
+  > .primary-link
+  > section
+  > .secondary-links
+  > a:hover {
+  border-color: white #160a3c #160a3c white;
+  background-color: #4d23cf;
+  color: white;
+}
+
+#nav > .wrap > .links > .browse-wrap > .dropdown > .footer {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  left: 200px;
+  top: -120px;
+  grid-gap: unset;
+
+  border-radius: unset;
+  font-size: 20px;
+  font-weight: unset;
+  padding: unset;
+  /* width: 200px; */
+
+  align-items: center;
+  background: unset;
+}
+
+#nav > .wrap > .links > .browse-wrap > .dropdown > .footer > a {
+  display: flex;
+  transition: unset;
+  /* display: none; */
+
+  /* width: 200px; */
+  /* height: 40px; */
+  background: unset;
+  background-color: #fae3ff;
+  border-width: 2px;
+  border-color: white #815cda #815cda white;
+  border-style: solid;
+  color: #4d23cf;
+  text-align: center;
+}
+
+#nav > .wrap > .links > .browse-wrap > .dropdown > .footer > a:hover {
+  border-color: white #160a3c #160a3c white;
+  background-color: #4d23cf;
+  color: white;
+}
+
+#nav > .wrap > .links > .browse-wrap > .dropdown > .footer > a > .icon {
+  display: none;
+}
+
+/* ==========================================================================
+   Temporary Changes
+   ========================================================================== */
+
+.page-content,
+#app > .wrap {
+  display: none;
+}
+
+#nav > .wrap > .search {
+  position: absolute;
+  right: 0;
+}
+
+#nav > .wrap > .user {
+  display: none;
+}
+
+.quick-search {
+  display: none;
+}
+
+.site-theme-dark {
+  --color-background: unset;
+}
