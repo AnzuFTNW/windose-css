@@ -1,13 +1,13 @@
 /* ==========================================================================
-   Needy AniList User's Windose - V0.1.2 - by @anzuftnw
-   - A WIN95-esque NGO/NSO inspired custom CSS-theme for AniList.co
+   Needy AniList User's Windose - V0.1.3 - by @anzuftnw
+   - a WIN95-esque NGO/NSO inspired custom CSS-theme for AniList.co
    ========================================================================== */
 
 /*
  * TODO:
  * - Finish Windose Menu
  *   - Sidebar Text
- *   - "More" Menu Tab and sub tabs
+ *   ✓ "More" Menu Tab and sub tabs
  * - Theme Switcher (Daytime Display)
  *   - Ame to KAngel transformation display on theme switch??
  * - Loading Screen (Booting Up Windose)
@@ -28,13 +28,14 @@
    ========================================================================== */
 
 :root {
+  --color-background-base: #222;
   --color-background-primary: #fae3ff;
   --color-background-secondary: #4d23cf;
   --color-border-upper: white;
   --color-border-lower: #815cda;
   --color-border-lower-button: #160a3c;
   --color-text-primary: black;
-  --color-text-secondary: var(--color-background-secondary);
+  --color-text-secondary: #4d23cf;
   --color-text-hover: white;
 }
 
@@ -43,24 +44,33 @@
 
 #nav > .wrap,
 #nav > .wrap > .links > .link,
-#nav > .wrap > .links > .browse-wrap {
+#nav > .wrap > .links > .browse-wrap > .link,
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link > section > .primary-link-text,
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link > section > .secondary-links > a,
+#nav > .wrap > .links > .browse-wrap > .dropdown > .footer > a,
+#nav > .wrap > .links > .browse-wrap > .dropdown > .footer::before {
   width: calc(196px + 2 * 2px);
   height: calc(36px + 2 * 2px);
   border-width: 2px;
   border-color: var(--color-border-upper) var(--color-border-lower) var(--color-border-lower) var(--color-border-upper);
   border-style: solid;
-  background-color: var(--color-background);
-}
-  
-#nav > .wrap:hover {
-  border-color: var(--color-border-lower) var(--color-border-upper) var(--color-border-upper) var(--color-border-lower);
+  background-color: var(--color-background-primary);
+  color: var(--color-text-secondary);
 }
 
 #nav > .wrap > .links > .link:hover,
-#nav > .wrap > .links > .browse-wrap:hover {
+#nav > .wrap > .links > .browse-wrap > .link:hover,
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link > section > .primary-link-text:hover,
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link > section > .secondary-links > a:hover,
+#nav > .wrap > .links > .browse-wrap > .dropdown > .footer > a:hover,
+#nav > .wrap > .links > .browse-wrap > .dropdown > .footer:hover::before {
   border-color: var(--color-border-upper) var(--color-border-lower-button) var(--color-border-lower-button) var(--color-border-upper);
   background-color: var(--color-background-secondary);
   color: var(--color-text-hover);
+}
+
+#nav > .wrap:hover {
+  border-color: var(--color-border-lower) var(--color-border-upper) var(--color-border-upper) var(--color-border-lower);
 }
 
 /* Fonts
@@ -73,7 +83,12 @@
 }
 
 #nav > .wrap::after,
-#nav > .wrap > .links {
+#nav > .wrap > .links,
+#nav > .wrap > .links > .browse-wrap > .link,
+#nav > .wrap > .links > .browse-wrap > .dropdown,
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link,
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link > section > .secondary-links,
+#nav > .wrap > .links > .browse-wrap > .dropdown > .footer {
   font-family: "PixelMplus10";
   font-size: 20px;
   font-weight: unset;
@@ -85,10 +100,9 @@
 /* Transitions
    ========================================================================== */
 
-#nav > .wrap > .links > .link,
-#nav > .wrap > .links > .browse-wrap,
-#nav > .wrap > .links > .browse-wrap > .link {
+#nav * {
   transition: unset;
+  animation: unset;
 }
 
 /* ==========================================================================
@@ -99,7 +113,7 @@ body {
   display: flex;
   justify-content: center;
   background-attachment: fixed;
-  background-color: #222;
+  background-color: var(--color-background-base);
   background-image: url("https://safe.haiiro.moe/OlvNoBbUjyWx.jpg");
   background-position: center 0;
   background-repeat: no-repeat;
@@ -189,252 +203,113 @@ body {
   width: calc(12px + (196px + 2* 2px));
   margin-bottom: 1px;
   background-image: url("https://safe.haiiro.moe/26VEfw7mnlRY.jpg");
-  color: var(--color-text-secondary);
 }
 
 #nav > .wrap:hover > .links {
   bottom: calc(45px + 2px);
 }
 
+#nav > .wrap:hover > .links::after {
+  position: absolute;
+  bottom: 2px;
+  left: 0px;
+  transform: rotate(-180deg);
+  font-size: 12px;
+  line-height: initial;
+  writing-mode: vertical-rl;
+  color: var(--color-text-hover);
+  content: "Needy Anilist User";
+}
+
+#nav > .wrap > .links > .browse-wrap > .link {
+  display: block;
+}
+
 #nav > .wrap > .links > .link,
-#nav > .wrap > .links > .browse-wrap,
 #nav > .wrap > .links > .browse-wrap > .link {
   padding: unset;
 }
 
-/* Start Menu Dropdowns
+/* Start Menu Dropdowns - Anime & Manga - Level 1
    ========================================================================== */
 
-#nav > .wrap > .links > .browse-wrap:hover::after {
+#nav > .wrap > .links > .browse-wrap:hover::after,
+#nav > .wrap > .links > .browse-wrap > .dropdown::before,
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link > a {
   display: none;
 }
 
 #nav > .wrap > .links > .browse-wrap > .dropdown {
-  top: calc(-2px - 80px);
-  left: calc(-2px + 200px);
-  pointer-events: auto;
-  background-color: unset;
-  border-radius: unset;
-  box-shadow: unset;
-  transition: unset;
-  animation: unset;
-  font-family: "PixelMplus10";
+  top: calc(0px - ((36px + 2 * 2px) * 2));
+  left: calc((196px + 2 * 2px));
   width: unset;
-}
-
-#nav > .wrap > .links > .browse-wrap > .dropdown::before {
-  display: none;
+  border-radius: unset;
+  background-color: unset;
+  box-shadow: unset;
 }
 
 #nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links {
   padding: 0;
 }
 
-#nav
-  > .wrap
-  > .links
-  > .browse-wrap
-  > .dropdown
-  > .primary-links
-  > .primary-link {
-  color: #4d23cf;
-  font-size: 20px;
-  font-weight: unset;
-  display: flex;
-  transition: unset;
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link {
+  display: block;
   margin-bottom: unset;
 }
 
-#nav
-  > .wrap
-  > .links
-  > .browse-wrap
-  > .dropdown
-  > .primary-links
-  > .primary-link
-  > a {
-  display: none;
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link > section > .primary-link-text,
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link > section:hover > .secondary-links {
+  display: block;
 }
 
-#nav
-  > .wrap
-  > .links
-  > .browse-wrap
-  > .dropdown
-  > .primary-links
-  > .primary-link
-  > section {
-  width: 200px;
-  height: 40px;
-  background-color: #fae3ff;
-  border-width: 2px;
-  border-color: white #815cda #815cda white;
-  border-style: solid;
-}
+/* Start Menu Dropdowns - Anime & Manga - Level 2
+   ========================================================================== */
 
-#nav
-  > .wrap
-  > .links
-  > .browse-wrap
-  > .dropdown
-  > .primary-links
-  > .primary-link
-  > section:hover {
-  border-color: white #160a3c #160a3c white;
-  background-color: #4d23cf;
-  color: white;
-}
-
-#nav
-  > .wrap
-  > .links
-  > .browse-wrap
-  > .dropdown
-  > .primary-links
-  > .primary-link
-  > section:hover
-  > .secondary-links {
-  display: flex;
-}
-
-#nav
-  > .wrap
-  > .links
-  > .browse-wrap
-  > .dropdown
-  > .primary-links
-  > .primary-link
-  > section
-  > .primary-link-text {
-  transition: unset;
-}
-
-#nav
-  > .wrap
-  > .links
-  > .browse-wrap
-  > .dropdown
-  > .primary-links
-  > .primary-link
-  > section
-  > .primary-link-text:hover {
-  color: inherit;
-}
-
-#nav
-  > .wrap
-  > .links
-  > .browse-wrap
-  > .dropdown
-  > .primary-links
-  > .primary-link
-  > section
-  > .secondary-links {
-  margin-top: unset;
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link > section > .secondary-links {
   position: absolute;
-  left: calc(200px);
   top: 0px;
-  /* display: flex; */
-  flex-direction: column;
-  font-size: unset;
-  font-weight: unset;
-  transition: unset;
+  left: calc(196px + 2 * 2px);
   display: none;
+  margin-top: unset;
 }
 
-#nav
-  > .wrap
-  > .links
-  > .browse-wrap
-  > .dropdown
-  > .primary-links
-  > .primary-link:last-child
-  > section
-  > .secondary-links {
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link:last-child > section > .secondary-links {
   top: 40px;
 }
 
-#nav
-  > .wrap
-  > .links
-  > .browse-wrap
-  > .dropdown
-  > .primary-links
-  > .primary-link
-  > section
-  > .secondary-links
-  > a {
-  width: 200px;
-  height: 40px;
-  background-color: #fae3ff;
-  border-width: 2px;
-  border-color: white #815cda #815cda white;
-  border-style: solid;
-  font-size: 20px;
-  font-weight: unset;
-  margin: 0;
-  transition: unset;
-  color: #4d23cf;
+#nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link > section > .secondary-links > a {
+  margin: unset;
 }
 
-#nav
-  > .wrap
-  > .links
-  > .browse-wrap
-  > .dropdown
-  > .primary-links
-  > .primary-link
-  > section
-  > .secondary-links
-  > a:hover {
-  border-color: white #160a3c #160a3c white;
-  background-color: #4d23cf;
-  color: white;
-}
+/* Start Menu Dropdowns - More
+   ========================================================================== */
 
 #nav > .wrap > .links > .browse-wrap > .dropdown > .footer {
-  display: flex;
-  flex-direction: column;
-
-  position: relative;
-  left: 200px;
-  top: -120px;
+  position: absolute;
+  top: calc(0px - ((36px + 2 * 2px)));
+  left: calc(196px + 2 * 2px);
+  display: block;
   grid-gap: unset;
-
-  border-radius: unset;
-  font-size: 20px;
-  font-weight: unset;
   padding: unset;
-  /* width: 200px; */
-
-  align-items: center;
+  border-radius: unset;
   background: unset;
 }
 
-#nav > .wrap > .links > .browse-wrap > .dropdown > .footer > a {
-  display: flex;
-  transition: unset;
-  /* display: none; */
-
-  /* width: 200px; */
-  /* height: 40px; */
-  background: unset;
-  background-color: #fae3ff;
-  border-width: 2px;
-  border-color: white #815cda #815cda white;
-  border-style: solid;
-  color: #4d23cf;
-  text-align: center;
+#nav > .wrap > .links > .browse-wrap > .dropdown > .footer::before {
+  position: absolute;
+  top: calc((36px + 2 * 2px) * 3);
+  left: calc(0px - (196px + 2 * 2px));
+  display: block;
+  content: "More";
 }
 
-#nav > .wrap > .links > .browse-wrap > .dropdown > .footer > a:hover {
-  border-color: white #160a3c #160a3c white;
-  background-color: #4d23cf;
-  color: white;
-}
-
+#nav > .wrap > .links > .browse-wrap > .dropdown > .footer > a,
 #nav > .wrap > .links > .browse-wrap > .dropdown > .footer > a > .icon {
   display: none;
+}
+
+#nav > .wrap > .links > .browse-wrap > .dropdown > .footer:hover > a {
+  display: block;
 }
 
 /* ==========================================================================
@@ -457,8 +332,4 @@ body {
 
 .quick-search {
   display: none;
-}
-
-.site-theme-dark {
-  --color-background: unset;
 }
