@@ -15,12 +15,13 @@
  * - Searchbar similar to WIN11
  * - Create Streaming Window to display Ame/KAngel animations (make them with photoshop ig, gifs)
  *   - Randomize Which one to display?
- * - Cakes helps me achieve this
+ *   - Cakes helps me achieve this
  *   - Display on profile maybe if not using css
- * - Fix up code
- *   - Order all attributes
- *   - Use Variables for reoccuring things and for dynamic changing
- *   - Use multiple selectors for reoccuring things
+ * ✓ Fix up code
+ *   ✓ Order all attributes
+ *   ✓ Use Variables for reoccuring things and for dynamic changing
+ *   ✓ Use multiple selectors for reoccuring things
+ * - Fixed Height / Test diff resolutions like ultra wide and rotated monitors
  */
 
 /* ==========================================================================
@@ -78,8 +79,7 @@
 
 @font-face {
   font-family: "PixelMplus10";
-  src: url("https://static.wikitide.net/boyhoodsendwiki/9/9a/PixelMplus10-Regular.woff")
-       format("woff");
+  src: url("https://github.com/AnzuFTNW/windose-css/raw/refs/heads/main/assets/fonts/LiberationSans.ttf");
 }
 
 #nav > .wrap::after,
@@ -100,6 +100,7 @@
 /* Transitions
    ========================================================================== */
 
+#nav,
 #nav * {
   transition: unset;
   animation: unset;
