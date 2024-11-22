@@ -79,7 +79,7 @@
 
 @font-face {
   font-family: "PixelMplus10";
-  src: url("https://github.com/AnzuFTNW/windose-css/raw/refs/heads/main/assets/fonts/PixelMplus10-Regular.ttf");
+  src: url("https://github.com/AnzuFTNW/windose-css/raw/refs/heads/main/assets/fonts/PixelMplus10-Regular.ttf") format('truetype');
 }
 
 #nav > .wrap::after,
