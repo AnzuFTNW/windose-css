@@ -6,7 +6,7 @@ Usable through CSS injecting browser extensions like [Stylus](https://chromewebs
 
 # Changelog
 
-- `2024/11/22` - _V1.1.2_
+- `2024/11/22` - _V0.1.2_
   - Even more work on start menu dropdowns
   - Total restructure of the code for improved readability and organization
 - `2024/11/21` - _V0.1.1_
