@@ -1,6 +1,6 @@
 # `V0.1.2` Needy AniList User's Windose
 
-A WIN95-esque NGO/NSO inspired custom CSS-theme for [AniList.co](https://anilist.co/).
+A WIN95-esque [NGO/NSO](https://en.wikipedia.org/wiki/Needy_Streamer_Overload) inspired custom CSS-theme for [AniList.co](https://anilist.co/).
 
 Usable through CSS injecting browser extensions like [Stylus](https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne) or AniList.co extension scripts like [Automail](https://github.com/hohMiyazawa/Automail).
 
