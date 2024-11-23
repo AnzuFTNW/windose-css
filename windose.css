@@ -1,15 +1,16 @@
 /* ==========================================================================
-   Needy AniList User's Windose - V0.1.3 - by @anzuftnw
+   Needy AniList User's Windose - V0.2.0 - by @anzuftnw
    - a WIN95-esque NGO/NSO inspired custom CSS-theme for AniList.co
    ========================================================================== */
 
 /*
  * TODO:
- * - Finish Windose Menu
- *   - Sidebar Text
+ * ✓ Finish Windose Menu
+ *   ✓ Sidebar Text
  *   ✓ "More" Menu Tab and sub tabs
- * - Theme Switcher (Daytime Display)
+ * ✓ Theme Switcher (Daytime Display)
  *   - Ame to KAngel transformation display on theme switch??
+ *   - Working Day Counter (Real Time) (ask cakes for help:D)
  * - Loading Screen (Booting Up Windose)
  * - Notifications Icon similar to WIN11
  * - Searchbar similar to WIN11
@@ -21,7 +22,8 @@
  *   ✓ Order all attributes
  *   ✓ Use Variables for reoccuring things and for dynamic changing
  *   ✓ Use multiple selectors for reoccuring things
- * - Fixed Height / Test diff resolutions like ultra wide and rotated monitors
+ * ✓ Fixed Height / Test diff resolutions like ultra wide and rotated monitors
+ *   - width <1040px switches to mobile nav, styling this? or ignoreeee
  */
 
 /* ==========================================================================
@@ -70,7 +72,10 @@
   color: var(--color-text-hover);
 }
 
-#nav > .wrap:hover {
+#nav > .wrap:hover,
+body > #app > .wrap > .footer > .container {
+  border-width: 2px;
+  border-style: solid;
   border-color: var(--color-border-lower) var(--color-border-upper) var(--color-border-upper) var(--color-border-lower);
 }
 
@@ -93,10 +98,11 @@
 #nav > .wrap > .links > .browse-wrap > .dropdown,
 #nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link,
 #nav > .wrap > .links > .browse-wrap > .dropdown > .primary-links > .primary-link > section > .secondary-links,
-#nav > .wrap > .links > .browse-wrap > .dropdown > .footer {
+#nav > .wrap > .links > .browse-wrap > .dropdown > .footer,
+#app > .wrap > .footer > .container::after {
   font-family: "PixelMplus10";
   font-size: 20px;
-  font-weight: unset;
+  font-weight: 100;
   line-height: 36px;
   letter-spacing: unset;
   text-align: center;
@@ -128,29 +134,52 @@
 body {
   display: flex;
   justify-content: center;
-  background-attachment: fixed;
+  align-items: center;
+  height: 100vh;
   background-color: var(--color-background-base);
-  background-image: url("https://safe.haiiro.moe/OlvNoBbUjyWx.jpg");
-  background-position: center 0;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
+body.site-theme-dark {
+  background-image: url("https://safe.haiiro.moe/jOghOqVt9pGT.jpg");
+}
+
+body:not(.site-theme-contrast):not(.site-theme-dark) {
+  background-image: url("https://safe.haiiro.moe/B4sFZVWqLNkU.jpg");
+}
+
+body.site-theme-contrast {
+  background-image: url("https://safe.haiiro.moe/jIfLjYBiZk8F.jpg");
+}
+
 #app {
+  display: flex;
+  /* flex-direction: column-reverse; */
+  align-items: flex-end;
   width: 1440px;
+  height: 100vh;
+  max-height: 1080px;
+  background-attachment: fixed;
+  background-image: url("https://safe.haiiro.moe/OlvNoBbUjyWx.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 /* ==========================================================================
    Taskbar
    ========================================================================== */
 
-#nav {
+#nav,
+body > #app > .wrap {
+  position: relative;
   top: unset !important; /* "!important" to remove flicker from JS (.hide) */
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  /* bottom: 0px; */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
   /* display: flex; */
   justify-content: flex-start;
-  width: 1440px;
+  /* width: 1440px; */
   height: calc(45px + 2px);
   border-top-width: 2px;
   border-top-color: var(--color-border-upper);
@@ -197,6 +226,7 @@ body {
   background-image: url("https://safe.haiiro.moe/nlDMWbOyKlyp.png");
 }
 
+#nav > .wrap > .user,
 #nav > .wrap > .logo > img {
   display: none;
 }
@@ -326,20 +356,90 @@ body {
 }
 
 /* ==========================================================================
+   Clock
+   ========================================================================== */
+
+#app > .wrap,
+#app > .wrap > .footer,
+#app > .wrap > .footer > .container,
+#app > .wrap > .footer > .container > .theme-selector > .theme-preview {
+  width: unset;
+  min-width: unset;
+  max-width: unset;
+  min-height: unset;
+  padding: unset;
+  margin: unset;
+  border: unset;
+  border-radius: unset;
+  background: unset;
+}
+
+#app > .wrap > .footer > .container > .theme-selector > h2,
+#app > .wrap > .footer > .container > .links,
+#app > .wrap > .footer > .container > .theme-selector > .theme-preview.system,
+div[role="tooltip"].el-tooltip__popper {
+  display: none;
+}
+
+#app > .wrap > .footer {
+  width: calc((134px + 2 * 2px) + 6px);
+}
+
+#app > .wrap > .footer > .container {
+  width: calc(134px + 2 * 2px);
+  height: calc(29px + 2 * 2px);
+  margin-top: 7px;
+}
+
+#app > .wrap > .footer > .container > .theme-selector {
+  width: 24px;
+  height: 24px;
+  margin: 2px 0 0 10px;
+}
+
+#app > .wrap > .footer > .container > .theme-selector > .theme-preview {
+  display: none;
+  width: 24px;
+  height: 24px;
+  font-size: 0px;
+  color: unset;
+}
+
+body.site-theme-dark > #app > .wrap > .footer > .container > .theme-selector > .theme-preview.default {
+  display: block;
+  background-image: url("https://safe.haiiro.moe/VG97QtDXmsr3.jpg");
+}
+
+body:not(.site-theme-contrast):not(.site-theme-dark) > #app > .wrap > .footer > .container > .theme-selector > .theme-preview.contrast {
+  display: block;
+  background-image: url("https://safe.haiiro.moe/ifrgro87p9sd.jpg");
+}
+
+body.site-theme-contrast > #app > .wrap > .footer > .container > .theme-selector > .theme-preview.dark {
+  display: block;
+  background-image: url("https://safe.haiiro.moe/CvjXKSW9y8KZ.jpg");
+}
+
+#app > .wrap > .footer > .container::after {
+  color: var(--color-text-secondary);
+  content: "DAY 1"; /* maybe make this dynamic somehow */
+  line-height: 14px;
+  height: 14px;
+  margin: 6px 0 0 28px;
+}
+
+
+
+
+/* ==========================================================================
    Temporary Changes
    ========================================================================== */
 
-.page-content,
-#app > .wrap {
+.page-content {
   display: none;
 }
 
 #nav > .wrap > .search {
-  position: absolute;
-  right: 0;
-}
-
-#nav > .wrap > .user {
   display: none;
 }
 
