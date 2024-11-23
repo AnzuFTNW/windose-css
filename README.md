@@ -2,6 +2,8 @@
 
 A WIN95-esque [NGO/NSO](https://en.wikipedia.org/wiki/Needy_Streamer_Overload) inspired custom CSS-theme for [AniList.co](https://anilist.co/).
 
+![example image](https://safe.haiiro.moe/uAdxzR6SHwjW.png)
+
 Usable through CSS injecting browser extensions like [Stylus](https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne) or AniList.co extension scripts like [Automail](https://github.com/hohMiyazawa/Automail).
 
 # Changelog
