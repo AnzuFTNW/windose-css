@@ -92,6 +92,11 @@ body > #app > .wrap > .footer > .container {
   src: url("https://anzuftnw.github.io/assets/fonts/zpix.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "PressStart2P";
+  src: url("https://anzuftnw.github.io/assets/fonts/PressStart2P-Regular.ttf") format("truetype");
+}
+
 #nav > .wrap::after,
 #nav > .wrap > .links,
 #nav > .wrap > .links > .browse-wrap > .link,
@@ -122,9 +127,53 @@ body > #app > .wrap > .footer > .container {
    ========================================================================== */
 
 #nav,
-#nav * {
+#nav *,
+#app > .progress {
   transition: unset;
   animation: unset;
+}
+
+/* ==========================================================================
+   Boot Screen
+   ========================================================================== */
+
+#app > .progress {
+  position: flex;
+  width: 100vw !important; /* !important to overrule the JS */
+  height: 100vh;
+  border-radius: unset;
+  background-color: black;
+  opacity: 1;
+  justify-items: center;
+  align-content: center;
+}
+
+#app > .progress::before {
+  position: absolute;
+  content: "";
+  background-image: url("https://safe.haiiro.moe/sLUl5eyE9U0D.jpg");
+  /* background-repeat: no-repeat; */
+  /* background-position: center center; */
+  /* background-size: contain; */
+  display: block;
+  height: 1080px;
+  width: 1440px;
+
+  top: 50%;
+  left: 50%;
+
+}
+
+#app > .progress::after {
+  position: absolute;
+  content: "";
+  background-image: url("https://safe.haiiro.moe/bjtxqNvkI5pw.jpg");
+  display: block;
+  height: 1080px;
+  width: 1440px;
+
+  top: 50%;
+  left: 50%;
 }
 
 /* ==========================================================================
