@@ -1,4 +1,4 @@
-# `V0.2.0` Needy AniList User's Windose
+# `V0.2.1` Needy AniList User's Windose
 
 A WIN95-esque [NGO/NSO](https://en.wikipedia.org/wiki/Needy_Streamer_Overload) inspired custom CSS-theme for [AniList.co](https://anilist.co/).
 
@@ -8,6 +8,10 @@ Usable through CSS injecting browser extensions like [Stylus](https://chromewebs
 
 # Changelog
 
+- `2024/11/26` - _V0.2.1_
+  - Started coding boot screen
+  - Added several new assests for boot screen
+  - NOTE: Need to redo taskbar side text with new font
 - `2024/11/22` - _V0.2.0_
   - Finished start menu
   - Rewritten some css to not break on different resolutions
